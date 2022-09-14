@@ -17,27 +17,37 @@ export class FoodContainerComponent implements OnInit {
     this.fs.getFood().subscribe((data) => (this.food = data));
   }
 
-  selectFood(f: FoodItem) {
-    this.selected = { ...f };
-  }
-
-  deleteFood(item: FoodItem) {
-    console.log("mock deleting ", item);
-  }
-
   addFood(item: FoodItem) {
     this.selected = item;
   }
 
-  foodSaved(item: FoodItem) {
-    const clone = Object.assign([], this.food) as Array<FoodItem>;
-    let idx = clone.findIndex((c) => c.id == item.id);
-    if (idx > -1) {
-      clone[idx] = item;
+  selectFood(f: FoodItem) {
+    this.selected = { ...f };
+  }
+
+  deleteFood(f: FoodItem) {
+    this.fs.deleteFood(f.id).subscribe(() => {
+      let deleted = this.food.filter((item) => item.id != f.id);
+      this.food = [...deleted];
+      this.selected = null;
+    });
+  }
+
+  foodSaved(f: FoodItem) {
+    if (f.id) {
+      this.fs.updateFood(f).subscribe((result) => {
+        let existing = this.food.find((f) => f.id == result.id);
+        if (existing) {
+          Object.assign(existing, result);
+          this.food = [...this.food];
+        }
+      });
     } else {
-      clone.push(item);
+      this.fs.addFood(f).subscribe((result) => {
+        this.food.push(result);
+        this.food = [...this.food];
+      });
     }
-    this.food = clone;
     this.selected = null;
   }
 }

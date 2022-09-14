@@ -1,6 +1,28 @@
 {
-"food": [
-    { "id": 1, "name": "Butter Chicken", "price": 9, "calories": 1200 },
-    { "id": 2, "name": "Curry Wurst", "price": 2.7, "calories": 730 },
-    { "id": 3, "name": "Blini with Salmon", "price": 8.3, "calories": 600 }
-]}
+  "food": [
+    {
+      "id": 1,
+      "name": "Butter Chicken",
+      "price": 10.5,
+      "calories": 1200
+    },
+    {
+      "id": 2,
+      "name": "Curry Wurst",
+      "price": 2.7,
+      "calories": 730
+    },
+    {
+      "id": 3,
+      "name": "Blini with Salmon",
+      "price": 8.3,
+      "calories": 600
+    },
+    {
+      "id": 4,
+      "name": "Zucchini Suppe",
+      "price": 4.8,
+      "calories": 250
+    }
+  ]
+}
