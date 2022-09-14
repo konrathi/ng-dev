@@ -7,12 +7,15 @@ label{
     width: 150px;
 }
 
-input{
-    min-width: 400px;
-    flex-grow: 1;
-}
 
 button{
     min-width: 200px
 }
 
+.card-edit-item {
+    width: 100%;
+}
+
+.save-button {
+    min-width: 100px;
+}
