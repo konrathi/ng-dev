@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { FormGroup, UntypedFormBuilder, Validators } from "@angular/forms";
 import { FoodItem } from "../food.model";
 
 @Component({
@@ -7,7 +8,16 @@ import { FoodItem } from "../food.model";
   styleUrls: ["./food-edit.component.scss"],
 })
 export class FoodEditComponent implements OnInit {
-  constructor() {}
+  
+  foodItem: FoodItem = new FoodItem();
+  
+  foodForm = this.fb.group({
+    name: [this.foodItem.name, Validators.required],
+    price: [this.foodItem.price],
+    calories: [this.foodItem.calories],
+  });
+
+  constructor(private fb: UntypedFormBuilder) {}
 
   @Input() food: FoodItem = new FoodItem();
   @Output() saveFood: EventEmitter<FoodItem> = new EventEmitter<FoodItem>();
