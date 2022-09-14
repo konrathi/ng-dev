@@ -8,6 +8,9 @@ import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { SidemenuComponent } from "./shared/sidemenu/sidemenu.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialExampleModule } from "./material.modules";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { SidemenuComponent } from "./shared/sidemenu/sidemenu.component";
     HomeComponent,
     AboutComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, BrowserAnimationsModule, MaterialExampleModule, FlexLayoutModule],
   providers: [],
   bootstrap: [AppComponent],
 })

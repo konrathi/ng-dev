@@ -6,9 +6,10 @@ import { FoodContainerComponent } from "./food-container/food-container.componen
 import { FoodEditComponent } from "./food-edit/food-edit.component";
 import { FoodListComponent } from "./food-list/food-list.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { MaterialExampleModule } from "../material.modules";
 
 @NgModule({
   declarations: [FoodContainerComponent, FoodListComponent, FoodEditComponent],
-  imports: [CommonModule, FoodRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, FoodRoutingModule, ReactiveFormsModule, FormsModule, MaterialExampleModule],
 })
 export class FoodModule {}

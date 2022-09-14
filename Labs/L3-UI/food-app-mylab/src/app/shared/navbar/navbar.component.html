@@ -1,11 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div
+      class="menuItem"
+      *ngFor="let item of navItems"
+      [routerLink]="[item.url]"
+      routerLinkActive="navLinkActive"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      {{ item.title }}
+    </div>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>  
+
 <div class="menu">
-  <div
-    class="menuItem"
-    *ngFor="let item of navItems"
-    [routerLink]="[item.url]"
-    routerLinkActive="navLinkActive"
-    [routerLinkActiveOptions]="{ exact: true }"
-  >
-    {{ item.title }}
-  </div>
+  
 </div>
