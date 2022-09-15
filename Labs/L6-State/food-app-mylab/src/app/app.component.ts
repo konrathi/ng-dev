@@ -12,7 +12,9 @@ export class AppComponent {
   title = 'Food App';
   mode: MatDrawerMode = 'side'
 
-  constructor(public ms: MenuService, public ls: LoadingService) {}
+  constructor(public ms: MenuService, public ls: LoadingService) {
+    this.setMenuPosition();
+  }
 
   ngOnInit() {
     this.setMenuPosition();
