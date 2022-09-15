@@ -17,6 +17,12 @@
       "name": "Blini with Salmon",
       "price": 8.3,
       "calories": 600
+    },
+    {
+      "id": 4,
+      "name": "Zucchini Suppe",
+      "price": 4.5,
+      "calories": 350
     }
   ]
 }
