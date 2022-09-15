@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MenuService } from "../menu/menu.service";
 import { NavItem } from "./nav-item.model";
 import { NavbarService } from "./navbar.service";
 
@@ -8,7 +9,7 @@ import { NavbarService } from "./navbar.service";
   styleUrls: ["./navbar.component.scss"],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private ns: NavbarService) {}
+  constructor(private ns: NavbarService, private ms: MenuService) {}
 
   navItems: NavItem[] = [];
 
@@ -16,5 +17,9 @@ export class NavbarComponent implements OnInit {
     this.ns.getItems().subscribe((data) => {
       this.navItems = data;
     });
+  }
+
+  toggleMenu() {
+    this.ms.toggleMenu();
   }
 }

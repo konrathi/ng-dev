@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDrawerMode } from "@angular/material/sidenav";
+import { MenuService } from "src/app/shared/menu/menu.service";
 import { FoodItem } from "../food.model";
 import { FoodService } from "../food.service";
 
@@ -10,8 +12,9 @@ import { FoodService } from "../food.service";
 export class FoodContainerComponent implements OnInit {
   food: FoodItem[] = [];
   selected: FoodItem | null = null;
+  sidenavMode: MatDrawerMode = 'side';
 
-  constructor(private fs: FoodService) {}
+  constructor(private fs: FoodService, private ms: MenuService) {}
 
   ngOnInit() {
     this.fs.getFood().subscribe((data) => (this.food = data));
@@ -50,4 +53,5 @@ export class FoodContainerComponent implements OnInit {
     }
     this.selected = null;
   }
+  
 }

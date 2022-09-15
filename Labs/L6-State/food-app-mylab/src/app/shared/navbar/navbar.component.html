@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
+    <div fxHide.gt-xs (click)="toggleMenu()" class="menu">
+      <mat-icon color="accent">menu</mat-icon>
+    </div>
     <div
       class="navItem"
       *ngFor="let item of navItems"
