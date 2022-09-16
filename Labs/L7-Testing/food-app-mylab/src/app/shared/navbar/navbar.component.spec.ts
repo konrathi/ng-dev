@@ -1,17 +1,46 @@
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { NavbarComponent } from './navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '../../material.module';
 
-describe('NavbarComponent', () => {
-  //add your setup here
+describe('navbar.component', () => {
+  let comp: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
+  let el: DebugElement;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [NavbarComponent],
+      imports: [HttpClientModule, MaterialModule],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(NavbarComponent);
+    comp = fixture.componentInstance;
+    el = fixture.debugElement;
+    fixture.detectChanges();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NavbarComponent);
+    comp = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    pending();
+    expect(comp).toBeTruthy();
   });
 
   it('should render 3 nav items', () => {
-    pending();
+    const divs = el.queryAll(By.css('.navLink'));
+    expect(divs.length).toBe(3);
   });
 
   it('should toggle the side menu when clicked', () => {
-    pending();
+    let visisble = comp.ms.sideNavVisible;
+    comp.toggleMenu();
+    fixture.detectChanges();
+    expect(comp.ms.sideNavVisible.value).toEqual(!visisble);
   });
 });
