@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +12,14 @@ import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LoadingInterceptor } from './shared/loading/loading-interceptor';
-import { LoadingService } from './shared/loading/loading.service';
+import { environment } from 'src/environments/environment';
+import { FBAuthModule } from './auth/fbauth.module';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -35,11 +40,10 @@ import { LoadingComponent } from './shared/loading/loading.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    AngularFireAuthModule.initializeApp(environment.firebaseConfig),
+    FBAuthModule,
   ],
-  providers: [
-    LoadingService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
