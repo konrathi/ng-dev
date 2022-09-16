@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { fromEvent, map, Subscription, tap } from 'rxjs';
 
 @Component({
@@ -13,11 +7,11 @@ import { fromEvent, map, Subscription, tap } from 'rxjs';
   styleUrls: ['./sign-pad.component.scss'],
 })
 export class SignPadComponent implements OnDestroy {
-  @ViewChild('signPad', { static: true }) canvas: ElementRef;
+  @ViewChild('signPad', { static: true }) canvas: ElementRef | null = null;
 
   constructor() {}
 
-  subMouseEvents: Subscription;
+  subMouseEvents: Subscription | null = null;
   result: { X: number; Y: number } = { X: 0, Y: 0 };
 
   ngOnDestroy() {

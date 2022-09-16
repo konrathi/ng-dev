@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { combineLatestWith, map, startWith, tap } from 'rxjs';
 import { StatefulVoucherService } from '../stateful-voucher.service';
-import { Voucher } from '../voucher.model';
+import { Voucher } from '../vouchers.model';
 
 @Component({
   selector: 'app-stateful-vouchers',
@@ -12,7 +12,7 @@ import { Voucher } from '../voucher.model';
 })
 export class StatefulVouchersComponent implements OnInit {
   filter$ = new FormControl<string>('', { nonNullable: true });
-  dataSource: MatTableDataSource<Voucher>;
+  dataSource: MatTableDataSource<Voucher> = new MatTableDataSource<Voucher>([]);
   displayedColumns = ['ID', 'Text', 'Date', 'Amount', 'deleteItem'];
 
   constructor(private vs: StatefulVoucherService) {}
@@ -32,17 +32,6 @@ export class StatefulVouchersComponent implements OnInit {
       .subscribe(
         (vouchers) => (this.dataSource = new MatTableDataSource(vouchers))
       );
-
-    // Imperative approach
-    // this.vs.getAllVouchers().subscribe((data) => {
-    //   this.dataSource = new MatTableDataSource(data);
-    // });
-
-    // this.filter.valueChanges.subscribe((filterValue) => {
-    //   if (filterValue) {
-    //     this.dataSource.filter = filterValue.trim().toLowerCase();
-    //   }
-    // });
   }
 
   editItem(row: any) {
