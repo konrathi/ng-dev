@@ -13,13 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
 import { FBAuthModule } from './auth/fbauth.module';
 import { LoadingComponent } from './shared/loading/loading.component';
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 @NgModule({
   declarations: [
@@ -40,7 +36,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    AngularFireAuthModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     FBAuthModule,
   ],
   providers: [],
